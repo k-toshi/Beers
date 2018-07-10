@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="Beers.Views.CDetailPage"
+    BackgroundColor="#16222a"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+    ios:Page.LargeTitleDisplay="Never"
+    ios:Page.UseSafeArea="true">
+    <ContentPage.Resources>
+        <ResourceDictionary Source="Resources/FontRD.xaml"/>
+        <StyleSheet Source="Styles/ShowPage.css" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <FlexLayout StyleClass="content" >
+                <Image StyleClass="poster" Source="ragnarok.jpg"/>
+                <Label Style="{StaticResource FAStyle}" StyleClass="popularity" Text="&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;" />
+                <Label StyleClass="year" Text="2017" />
+                <Label StyleClass="rating" Text="PG-13" />
+                <Label StyleClass="length" Text="2hr 10m" />
+                <BoxView StyleClass="spacer"/>
+
+                <Label StyleClass="title" Text="Thor: Ragnarok" />
+                <Label StyleClass="description" Text="Thor is imprisoned on the other side of the universe and finds himself in a race against time to get back to Asgard to stop Ragnarok, the destruction of his homeworld and the end of ..."/>
+                <Label StyleClass="description">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Cast: " FontAttributes="Bold" />
+                            <Span Text="Chris Hemsworth, Tom Hiddleston, Cate Blanchett, Idris Elba, Jeff Goldblum..." />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label StyleClass="description">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Director: " FontAttributes="Bold" />
+                            <Span Text="Taika Waititi" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label StyleClass="description">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Writers: " FontAttributes="Bold" />
+                            <Span Text="Eric Pearson, Craig Kyle, Christopher Yost" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label StyleClass="action" Style="{StaticResource FAStyle}" Text="&#xf0fe;"/>
+                <Label StyleClass="action" Style="{StaticResource FAStyle}" Text="&#xf14d;"/>
+               <BoxView FlexLayout.Grow="1" />
+
+            </FlexLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

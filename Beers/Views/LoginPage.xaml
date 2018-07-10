@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="Beers.Views.LoginPage"
+    Title="ログイン">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="tilogin" Text="ログイン" Clicked="Login_Clicked" IsEnabled="{Binding !IsBusy}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <TableView Intent="Form">
+                <TableRoot>
+                    <TableSection Title="ログイン">
+                        <ViewCell>
+                            <Entry Text="{Binding Email}" Placeholder="type here" Keyboard="Email" />
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection Title="パスワード">
+                        <ViewCell>
+                            <Entry Text="{Binding Password}" Placeholder="type here" Keyboard="Text" IsPassword="true" />
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection Title="ユーザ登録はこちらから">
+                        <TextCell Text="新規ユーザ登録" Tapped="Add_Clicked" Detail="新規にユーザ登録をする場合、クリックして下さい" IsEnabled="{Binding !IsBusy}" TextColor="Black"/>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+            <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" Color="Red" BackgroundColor="Transparent"  />
+            <Editor Text="{Binding Error}" TextColor="Red" IsEnabled="false" HeightRequest="200" IsVisible="{Binding IsError}"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

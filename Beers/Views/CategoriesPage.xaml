@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="Beers.Views.CategoriesPage"
+    Title="{Binding Title}" >
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="CategoriesListView" 
+                      ItemsSource="{Binding Categories}" 
+                      VerticalOptions="FillAndExpand" 
+                      HasUnevenRows="true" 
+                      IsPullToRefreshEnabled="true" 
+                      IsRefreshing="{Binding IsBusy, Mode=OneWay}" 
+                      CachingStrategy="RecycleElement" 
+                      ItemSelected="OnCategorySelected" 
+                      RefreshCommand="{Binding LoadCategoriesCommand}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20"></RowDefinition>
+                                    <RowDefinition Height="20"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding CategoryName}" LineBreakMode="TailTruncation" TextColor="Black"></Label>
+                                <Label Grid.Row="1" Grid.Column="0" Text="{Binding Detail}" Font="Small"  TextColor="Gray" LineBreakMode="TailTruncation"></Label>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

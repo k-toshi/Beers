@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Beers.Views.MenuPage"
+             Title="メニュー">
+    <ContentPage.Content>
+        <StackLayout>
+            <TableView x:Name="tvMenu" Intent="Form">
+                <TableRoot x:Name="trMenu">
+                </TableRoot>
+            </TableView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

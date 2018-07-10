@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Beers.Views.MyPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="ti1" Text="取引履歴" Clicked="ReferHistory_Clicked" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout x:Name="sl">
+                <Label Text="load" />
+                <Button Text="load" />
+            </StackLayout>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

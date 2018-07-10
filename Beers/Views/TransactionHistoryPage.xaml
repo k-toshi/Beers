@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Beers.Views.TransactionHistoryPage"
+             Title="{Binding Title}" 
+             x:Name="TrasanctionHistoryPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="TransactionHistoryListView" 
+                      ItemsSource="{Binding TransactionHistory}" 
+                      VerticalOptions="FillAndExpand" 
+                      HasUnevenRows="true" 
+                      IsPullToRefreshEnabled="true" 
+                      IsRefreshing="{Binding IsBusy, Mode=OneWay}" 
+                      CachingStrategy="RecycleElement"
+                      RefreshCommand="{Binding LoadTransactionHistoryCommand}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="5">
+                                <StackLayout Padding="3" Orientation="Horizontal">
+                                    <Label Text="{Binding Id,StringFormat='ID:{0}'}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="10" />
+                                    <Label Text="{Binding FromName}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="10" />
+                                    <Label Text="->" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="10" />
+                                    <Label Text="{Binding ToName}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="10" />
+                                </StackLayout>
+                                <StackLayout Padding="3" Orientation="Horizontal">
+                                    <Label Text="{Binding Cash,StringFormat='ポイント:{0}'}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="10" />
+                                    <Label Text="{Binding CreateDateTime,StringFormat='{0:yyyy/MM/dd hh:mm:ss}'}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="10" />
+                                    <Label Text="{Binding RedFlg}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="10" />
+                                    <Label Text="{Binding CancelTrId,StringFormat='訂正対象ID:{0}'}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="10" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

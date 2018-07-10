@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="Beers.Views.CuUserPage"
+    Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="tiCuUser" Clicked="Update_Clicked" IsEnabled="{Binding !IsBusy}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <TableView Intent="Form">
+                <TableRoot x:Name="trCuUser">
+                    <TableSection x:Name="tsUserInfo" Title="ユーザ情報">
+                        <EntryCell x:Name="ecEmial" Label="Email:" Text="{Binding NewUser.Email}" Placeholder="type here" Keyboard="Email" LabelColor="Gray"/>
+                        <EntryCell x:Name="ecPUserName" Label="ユーザ名:" Text="{Binding NewUser.PUserName}" Placeholder="type here" Keyboard="Text" LabelColor="Gray" />
+                        <EntryCell x:Name="ecTwitterAccount" Label="Twitter:" Text="{Binding NewUser.TwitterAccount}" Placeholder="type here" Keyboard="Text" LabelColor="Gray" />
+                    </TableSection>
+                    <TableSection x:Name="tsOldPassword" Title="パスワード（旧）">
+                        <ViewCell>
+                            <Entry Text="{Binding OldPassword}" Placeholder="type here" Keyboard="Text" IsPassword="true" />
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection x:Name="tsPassword" Title="パスワード（新）">
+                        <ViewCell>
+                            <Entry Text="{Binding Password}" Placeholder="type here" Keyboard="Text" IsPassword="true" />
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection x:Name="tsConfirmationPassword" Title="パスワード(確認用)">
+                        <ViewCell>
+                            <Entry Text="{Binding ConfirmationPassword}" Placeholder="type here" Keyboard="Text" IsPassword="true" />
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+            <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" Color="Red"  BackgroundColor="Transparent" />
+            <Editor Text="{Binding Error}" TextColor="Red" IsEnabled="false" HeightRequest="200" IsVisible="{Binding IsError}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="Beers.Views.StepCounterPage"
+    Title="歩数計">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{Binding ButtonName}" Command="{Binding ControlStepStatusCommand}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <TableView x:Name="tvStepCounter" Intent="Form">
+                <TableRoot>
+                    <TableSection Title="計測状況" x:Name="tsStepCounter">
+                        <TextCell Text="{Binding StepStatus, StringFormat='計測状況:{0}'}" TextColor="Black" />
+                        <TextCell Text="{Binding CurrentPlace, StringFormat='現在地:{0}'}" TextColor="Black" />
+                        <TextCell Text="{Binding IsTargetArea, StringFormat='ポイント対象:{0}'}" TextColor="Black" />
+                        <TextCell Text="{Binding StepCounts, StringFormat='歩数:{0}'}" TextColor="Black" />
+                        <TextCell Text="{Binding StepPoints, StringFormat='獲得ポイント:{0}'}" TextColor="Black" />
+                        <ViewCell>
+                            <Grid Padding="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"></ColumnDefinition>
+                                    <ColumnDefinition Width="40"></ColumnDefinition>
+                                    <ColumnDefinition Width="40"></ColumnDefinition>
+                                    <ColumnDefinition Width="40"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout  Grid.Row="0" Grid.Column="0" Padding="10,5,0,0" >
+                                   <Label Text="活動状況:" TextColor="Black" /> 
+                                </StackLayout>
+                                <Image Grid.Row="0" Grid.Column="1" Source="{Binding WalkImg}" Aspect="AspectFill"/>
+                                <Image Grid.Row="0" Grid.Column="2" Source="{Binding RunImg}" Aspect="AspectFill"/>
+                                <Image Grid.Row="0" Grid.Column="3" Source="{Binding CarImg}" Aspect="AspectFill"/>
+
+                            </Grid>
+                            <!--
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="活動状:" />
+                                <Image Source="{Binding WalkImg}" />
+                                <Image Source="{Binding RunImg}" />
+                                <Image Source="{Binding CarImg}" />
+                            <TextCell Text="{Binding ActivityType, StringFormat='活動状況:{0}'}" />
+                            </StackLayout>
+                            -->
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

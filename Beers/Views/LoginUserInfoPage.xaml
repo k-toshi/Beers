@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Beers.Views.LoginUserInfoPage" 
+             Title="お客様情報">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="取引履歴" Clicked="ReferHistory_Clicked" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <TableView x:Name="tvLoginUser" Intent="Form">
+                <TableRoot>
+                    <TableSection Title="ユーザ情報" x:Name="tsLoginUserInfo">
+                        <TextCell Text="{Binding LoginUser.PUserName , StringFormat='ユーザ名:{0}'}" TextColor="Black" />
+                        <TextCell Text="{Binding LoginUser.Email, StringFormat='Email:{0}'}" TextColor="Black" />
+                        <TextCell Text="{Binding LoginUser.TwitterAccount, StringFormat='Twitter:{0}'}" TextColor="Black" />
+                    </TableSection>
+                    <TableSection Title="口座情報" x:Name="tsLoginUserAccountInfo">
+                        <TextCell Text="{Binding LoginUserAccount.Cash, StringFormat='ポイント数:{0}'}" TextColor="Black"/>
+                    </TableSection>
+                    <TableSection Title="ユーザ情報の変更はこちらから">
+                        <TextCell Text="ユーザ情報変更" Tapped="Update_Clicked" Detail="ユーザ情報を変更する場合、クリックして下さい" IsEnabled="{Binding !IsBusy}" TextColor="Black" />
+                        <TextCell Text="パスワード変更" Tapped="UpdatePassword_Clicked" Detail="パスワードを変更する場合、クリックして下さい" IsEnabled="{Binding !IsBusy}" TextColor="Black" />
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
