@@ -84,6 +84,47 @@
       <DependentUpon>CDetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Models\TargetArea.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\EventController.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\TwitterController.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\TwitterViewPage.xaml.cs">
+      <DependentUpon>TwitterViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TwitterViewViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Tweet.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\EventsPage.xaml.cs">
+      <DependentUpon>EventsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Models\EventView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\EventsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\EventUserView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\EventSituationViewPage.xaml.cs">
+      <DependentUpon>EventSituationViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Models\EventSituationView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\EventUserCountView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\EventSituationViewViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\WinPubView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\PrizeCheckPage.xaml.cs">
+      <DependentUpon>PrizeCheckPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\PrizeCheckViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\LostPage.xaml.cs">
+      <DependentUpon>LostPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\EventDetailPage.xaml.cs">
+      <DependentUpon>EventDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Models\EventHeaderView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\EventHeaderPage.xaml.cs">
+      <DependentUpon>EventHeaderPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Models\EventDetailView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\EventHeaderViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ExtMap.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\SearchPubsOnMapPage.xaml.cs">
+      <DependentUpon>SearchPubsOnMapPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Pub.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />
@@ -151,11 +192,44 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\TwitterViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\EventsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\EventSituationViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\PrizeCheckPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\LostPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\EventDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\EventHeaderPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\SearchPubsOnMapPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Controllers\" />
     <Folder Include="$(MSBuildThisFileDirectory)Interfaces\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\Resources\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\Styles\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Controls\" />
   </ItemGroup>
 </Project>

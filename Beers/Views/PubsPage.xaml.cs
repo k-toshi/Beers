@@ -17,7 +17,7 @@ namespace Beers.Views
             InitializeComponent();
 
             int pvmInteger = Convert.ToInt32(viewparams[0]);
-            BindingContext = viewModel = new PubsViewModel((CommonDef.PubsViewMode)pvmInteger);
+			BindingContext = viewModel = new PubsViewModel((CommonDef.PubsViewMode)pvmInteger);
         }
 
         async void OnPubSelected(object sender, SelectedItemChangedEventArgs args)
@@ -28,8 +28,14 @@ namespace Beers.Views
 
             switch (viewModel.pubsViewMode)
             {
-                case CommonDef.PubsViewMode.UserPub:
+                case CommonDef.PubsViewMode.UserPubForItem:
                     await Navigation.PushAsync(new CategoriesPage(pub));
+                    break;
+				case CommonDef.PubsViewMode.UserPubForEvent:
+					object[] viewparams = new object[2];
+					viewparams[0] = 0;
+					viewparams[1] = pub;
+					await Navigation.PushAsync(new EventsPage(viewparams));
                     break;
                 default:
                     break;

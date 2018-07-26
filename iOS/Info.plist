@@ -59,5 +59,11 @@
 	<string>We use location for our point service. </string>
 	<key>Builed display Name</key>
 	<string>Hx3</string>
+	<key>CFBundleName</key>
+	<string>Hx3</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>We use location for our point service.</string>
+	<key>Custom Property</key>
+	<string></string>
 </dict>
 </plist>

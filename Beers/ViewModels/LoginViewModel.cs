@@ -90,6 +90,8 @@ namespace Beers.ViewModels
             {
                 await UserController.GetUserInfos();
                 await UserController.GetUserAccounts();
+				await TwitterController.SetToken();
+                
                 return true;
             }
         }

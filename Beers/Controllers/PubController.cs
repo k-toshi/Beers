@@ -31,5 +31,16 @@ namespace Beers.Controllers
             if (!hsr.IsError) return hsr.ResultData;
             else return null;
         }
+
+		public static async Task<ObservableCollection<Pub>> GetPubsInTargetScope(double baselatitude, double baselongitude, double distance, DateTime targetDateTime)
+        {
+
+			HttpServiceResult<ObservableCollection<Pub>> hsr =
+				await HttpService.GetDataFromService<ObservableCollection<Pub>>
+				                 ("api/pubs/getpubs?baselatitude=" + baselatitude + "&baselongitude=" + baselongitude + "&distance=" + distance + "&targetDateTime=" + targetDateTime + "&apptype=1");
+
+            if (!hsr.IsError) return hsr.ResultData;
+            else return null;
+        }
     }
 }

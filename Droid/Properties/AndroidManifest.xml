@@ -6,8 +6,14 @@
 	<uses-permission android:name="android.permission.CAMERA" />
 	<uses-permission android:name="android.permission.CONTROL_LOCATION_UPDATES" />
 	<uses-permission android:name="android.permission.LOCATION_HARDWARE" />
+	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.INTERNET" />
 	<application android:label="Beers">
 		<uses-permission android:name="android.permission.CAMERA" />
 		<uses-permission android:name="android.permission.FLASHLIGHT" />
+		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyDTLUuT9a2BgyBoAEZx48MvoNXto79NG-Q" />
 	</application>
 </manifest>

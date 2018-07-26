@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Beers.Views.EventSituationViewPage"
+             xmlns:vm="clr-namespace:Beers;" 
+             Title="イベント状況">
+
+    <ContentPage.ToolbarItems> 
+        <ToolbarItem x:Name="tiCheck" Text="当選確認" Clicked="Check_Clicked" IsEnabled="{Binding !IsBusy}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0" Grid.Column="0" Padding="5,5,0,5">
+                <BoxView BackgroundColor="#96d1ff" />
+                <StackLayout Orientation="Vertical">
+                    <Label VerticalOptions="Fill" HorizontalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="総額" FontAttributes="Bold" FontSize="13" ForegroundColor="White" />
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Fill">
+                        <Label VerticalOptions="Fill" HorizontalOptions="End" Text="{Binding TotalPrize,StringFormat='{0}P'}" FontAttributes="Bold" FontSize="18" TextColor="{Binding UpColor}">
+                        </Label>
+                        <Image Source="{Binding UpImg}" Aspect="AspectFill" VerticalOptions="Fill"/>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="1" Padding="5,5,0,5">
+                <BoxView BackgroundColor="#96d1ff" />
+                <StackLayout Orientation="Vertical">
+                    <Label VerticalOptions="Fill" HorizontalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="予想配当額" FontAttributes="Bold" FontSize="13" ForegroundColor="White" />
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Fill">
+                        <Label VerticalOptions="Start" HorizontalOptions="End" Text="{Binding MyPrize,StringFormat='{0}P'}" FontAttributes="Bold" FontSize="18" TextColor="{Binding UpdownColor}">
+                        </Label>
+                        <Image Source="{Binding UpdownImg}" Aspect="AspectFill" VerticalOptions="Fill"/>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+            <StackLayout Grid.Row="0" Grid.Column="2" Padding="0,5,0,5" VerticalOptions="Center">
+                <Image Source="twitter.png" Aspect="AspectFill">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnTwitterIcon"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+            <TableView 
+                Grid.Row="1" 
+                Grid.ColumnSpan="3" 
+                x:Name="tvEventSituationView" 
+                Intent="Form"
+                  >
+                <TableRoot>
+                    <TableSection Title="更新" x:Name="tsEventSituationView0">
+                        <TextCell Text="状況を更新する" IsEnabled="{Binding !IsBusy}" Command="{Binding LoadEventsCommand}" TextColor="Black" />
+                    </TableSection>
+                    <TableSection Title="参加イベント情報" x:Name="tsEventSituationView1">
+                        <TextCell Text="{Binding EventName, StringFormat='イベント名:{0}'}" TextColor="Black" />
+                        <TextCell Text="{Binding PubName, StringFormat='参加店舗名:{0}'}" TextColor="Black" />
+                        <TextCell Text="{Binding UserCount, StringFormat='来店者数:{0}'}" TextColor="Black" />
+                        <TextCell Text="{Binding EndDateTime, StringFormat='終了予定時間:{0}'}" TextColor="Black" />
+                    </TableSection>
+                    <TableSection Title="その他" x:Name="tsEventSituationView2">
+                        <TextCell Text="他店参加状況" Detail="他店の状況を確認する" IsEnabled="{Binding !IsBusy}" TextColor="Black" />
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -53,7 +53,8 @@ namespace Beers.ViewModels
 
             switch (pubsViewMode)
             {
-                case CommonDef.PubsViewMode.UserPub:
+                case CommonDef.PubsViewMode.UserPubForItem:
+				case CommonDef.PubsViewMode.UserPubForEvent:
                     Title = "店舗一覧";
                     pubs = await UserController.GetUserPubs();
                     break;

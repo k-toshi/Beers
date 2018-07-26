@@ -11,5 +11,6 @@ namespace Beers.Models
         public int UserAuthLevel { get; set; }
         public string PageName { get; set; }
         public FileImageSource Icon { get; set; }
+		public string Section { get; set; }
     }
 }

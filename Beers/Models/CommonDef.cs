@@ -5,7 +5,14 @@ namespace Beers.Models
     {
         public enum PubsViewMode
         {
-            UserPub
+            UserPubForItem,
+            UserPubForEvent
+        }
+
+		public enum EventsViewMode
+        {
+			PubParticipatedEvents,
+			AllNotStartedEvents
         }
 
         public enum UserType
@@ -25,7 +32,8 @@ namespace Beers.Models
 
         public enum QrCodeType
         {
-            payment
+            Payment,
+            ApplyEvent
         }
 
         public enum CuUserPageType
@@ -33,6 +41,15 @@ namespace Beers.Models
             New,
             Change,
             ChangePassword
+        }
+
+		public enum EventGetType
+        {
+			NotParticipating = 0,
+			Participating = 1,
+            All = 2,
+			NotParticipatingFinished = 3,
+            UnsettledPrize = 4
         }
     }
 }

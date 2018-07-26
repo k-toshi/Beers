@@ -32,7 +32,7 @@ namespace Beers.Views
                 return;
 
             string qrCodeString =
-                (int)CommonDef.QrCodeType.payment + "," +
+                (int)CommonDef.QrCodeType.Payment + "," +
                          targetPubId.ToString() + "," +
                          item.Id.ToString() + "," +
                          item.Price.ToString();

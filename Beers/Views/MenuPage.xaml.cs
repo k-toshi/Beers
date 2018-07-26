@@ -50,30 +50,50 @@ namespace Beers.Views
         {
             MenuList = new List<BeersMenu>
             {
-				//new BeersMenu { Id="001", Title="xxx", Detail="xxx", Order=1, UserAuthLevel = 0, PageName = "StepCounterPage"},
-                new BeersMenu { Id="101", Title="歩数計", Detail="歩いてポイントをゲット！", Order=1, UserAuthLevel = 1,PageName = "StepCounterPage",Icon="Step_icon.png"},
-                new BeersMenu { Id="102", Title="QRコード読取", Detail="QRコード読取ります", Order=1, UserAuthLevel = 1,PageName = "QrReaderPage",Icon="Qr_icon.png"},
-                new BeersMenu { Id="201", Title="店舗商品照会", Detail="店舗の商品照会および取引を行います", Order=1, UserAuthLevel = 2,PageName = "PubsPage,0",Icon="List_icon.png"},
+				new BeersMenu { Id="001", Title="テスト", Detail="テスト", Order=1, UserAuthLevel = 0, PageName = "SearchPubsOnMapPage",Icon="Step_icon.png",Section="001"},
+				new BeersMenu { Id="002", Title="イベント検索", Detail="イベントを検索!", Order=2, UserAuthLevel = 0,PageName = "EventsPage,1",Icon="Step_icon.png",Section="001"},
+				new BeersMenu { Id="003", Title="付近検索", Detail="付近のイベント開催店を検索!", Order=3, UserAuthLevel = 0,PageName = "SearchPubsOnMapPage",Icon="Step_icon.png",Section="001"},
+				new BeersMenu { Id="101", Title="歩数計", Detail="歩いてポイントをゲット！", Order=1, UserAuthLevel = 1,PageName = "StepCounterPage",Icon="Step_icon.png",Section="101"},
+				new BeersMenu { Id="102", Title="イベント状況", Detail="参加イベントの状況をチェック!", Order=1, UserAuthLevel = 1,PageName = "EventSituationViewPage",Icon="Step_icon.png",Section="102"},
+				new BeersMenu { Id="103", Title="QRコード読取", Detail="QRコード読取ります", Order=1, UserAuthLevel = 1,PageName = "QrReaderPage",Icon="Qr_icon.png",Section="109"},
+				new BeersMenu { Id="201", Title="店舗商品照会", Detail="店舗の商品照会および取引を行います", Order=1, UserAuthLevel = 2,PageName = "PubsPage,0",Icon="List_icon.png",Section="201"},
+				new BeersMenu { Id="202", Title="参加イベント", Detail="参加しているイベントの確認", Order=2, UserAuthLevel = 2,PageName = "PubsPage,1",Icon="List_icon.png",Section="201"},
             };
         }
 
         private void CreateMenuForTargetAuthLevel(int authLevel)
         {
-            TableSection ts = new TableSection();
-
-            foreach(var menu in MenuList.Where(a => a.UserAuthLevel == authLevel).OrderBy(a => a.UserAuthLevel))
+			string tscode = "";
+			string beforeTscode = "";
+			List<BeersMenu> sameGroupList = new List<BeersMenu>();
+            
+			foreach(var menu in MenuList.Where(a => a.UserAuthLevel == authLevel).OrderBy(a => a.Section).OrderBy(a => a.Order))
             {
-                ViewCell viewCell = CreateMenuViewCell(menu);
-                ts.Add(viewCell);
-            }
+				tscode = menu.Section;
+				if (tscode != beforeTscode){   
+					if (!string.IsNullOrEmpty(beforeTscode)) {
+						CreateMenuSection(sameGroupList);
+						sameGroupList = new List<BeersMenu>();
+					}
+				}   
+                sameGroupList.Add(menu);
+				beforeTscode = menu.Section;
+            }    
 
-            if(ts.Count>0)
-            {
-                ts.Title = GetTableSectionTitle(authLevel);
-                trMenu.Add(ts);
-            }
-
+			if(sameGroupList.Count>0) CreateMenuSection(sameGroupList);
         }
+
+		private void CreateMenuSection(List<BeersMenu> menus)
+		{
+			TableSection ts = new TableSection();
+			ts.Title = GetTableSectionTitle(menus[0].Section);
+            foreach(BeersMenu menu in menus)
+			{
+				ViewCell viewCell = CreateMenuViewCell(menu);
+                ts.Add(viewCell);
+			}
+			trMenu.Add(ts);
+		}
 
         private ViewCell CreateMenuViewCell(BeersMenu menu)
         {
@@ -161,18 +181,20 @@ namespace Beers.Views
 
         }
 
-        private string GetTableSectionTitle(int authLevel)
+        private string GetTableSectionTitle(string tscode)
         {
-            switch (authLevel)
+			switch (tscode)
             {
-                case 0:
+				case "001":
                     return "一般利用者";
-                case 1:
-                    return "会員";
-                case 2:
-                    return "店舗管理者";
-                case 3:
-                    return "システム管理者";
+                case "101":
+                    return "歩数計";
+                case "102":
+                    return "ブラット";
+                case "109":
+                    return "共通";
+                case "201":
+                    return "店舗";
                 default:
                     return "";
             }
